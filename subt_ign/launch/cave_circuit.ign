@@ -33,6 +33,8 @@
     $enableGroundTruth = enableGroundTruth
   end
 
+  $engine = engine
+
   # Check if circuit is not defined or is empty/nil
   if !defined?(circuit) || circuit == nil || circuit.empty?
     $circuit = 'cave'
@@ -278,6 +280,7 @@
             entity_type="world"
             filename="libignition-gazebo-physics-system.so"
             name="ignition::gazebo::systems::Physics">
+            <engine><filename>libignition-physics-<%= $engine %>-plugin.so</filename></engine>
     </plugin>
     <plugin entity_name="<%= $worldName %>"
             entity_type="world"
